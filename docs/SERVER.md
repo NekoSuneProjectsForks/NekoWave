@@ -23,8 +23,14 @@ client mod alone cannot configure a server mission.
    eight fixed frequencies; only slots with both a name and URL play. The
    example HTTPS URL must work from each client's PC before activation.
 4. Install the matching signed client mod on server and distribute its `.bikey`
-   into the server `keys/` directory. With all required mods signed, use
-   `verifySignatures=2`; do not disable verification for public servers.
+   into the server `keys/` directory. Copy [`server/meta.cpp`](../server/meta.cpp)
+   to the root of the server's `@LootTeamRadio/` directory, next to `mod.cpp`
+   and `addons/`. Its `publishedid = 3816734792` links the server mod to the
+   [existing Workshop item](https://steamcommunity.com/sharedfiles/filedetails/?id=3816734792)
+   for launcher auto-download; keep the name and timestamp from this release.
+   Do **not** place it inside the PBO or under `server/` on the DayZ host.
+   With all required mods signed, use `verifySignatures=2`; do not disable
+   verification for public servers.
 5. Restart gracefully; check server RPT for `[RADIO] stations loaded: 8` and
    script errors. Test with a separate Windows client. Back up profile
    configuration and binaries before any release migration; rollback if
