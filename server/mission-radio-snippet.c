@@ -27,19 +27,21 @@
 
 	void HandleRadioChatCommand(string text, string from)
 	{
-		if (text.IndexOf("!radio") != 0) return;
-		if (text == "!radio help")
+		string cmd = text;
+		cmd.ToLower();
+		if (cmd.IndexOf("!radio") != 0) return;
+		if (cmd == "!radio help")
 		{
 			RadioSendHelp(from);
 			return;
 		}
-		if (text.IndexOf("!radio volume ") == 0)
+		if (cmd.IndexOf("!radio volume ") == 0)
 		{
 			RadioSetPlayerVolume(from, text.Substring(14, text.Length() - 14));
 			return;
 		}
 		// Personal volume shorthand: !radio 0 .. !radio 100.
-		if (text.IndexOf("!radio ") == 0)
+		if (cmd.IndexOf("!radio ") == 0)
 		{
 			string shorthand = text.Substring(7, text.Length() - 7);
 			if (shorthand.Length() >= 1 && shorthand.Length() <= 3 && shorthand.ToInt().ToString() == shorthand)
@@ -54,19 +56,19 @@
 			return;
 		}
 		Print("[RADIO] cmd from admin: " + text);
-		if (text == "!radio reload")
+		if (cmd == "!radio reload")
 		{
 			RadioLoadStations();
 			return;
 		}
-		if (text.IndexOf("!radio clear ") == 0)
+		if (cmd.IndexOf("!radio clear ") == 0)
 		{
 			string slotText = text.Substring(13, text.Length() - 13);
 			if (slotText.Length() != 1 || slotText.ToInt() < 1 || slotText.ToInt() > 8 || slotText.ToInt().ToString() != slotText) return;
 			RadioSetStation(slotText.ToInt(), "", "");
 			return;
 		}
-		if (text.IndexOf("!radio set ") != 0) return;
+		if (cmd.IndexOf("!radio set ") != 0) return;
 		string args = text.Substring(11, text.Length() - 11);
 		int comma1 = args.IndexOf(",");
 		if (comma1 < 1) return;
