@@ -56,8 +56,8 @@ class LootRadioState
 	// MPC-HC on the same PC; Linux test host forwards this port to the Windows VM.
 	static const string MPC_BASE = "http://127.0.0.1:13579/";
 	static const int MUSIC_RPC_ID = 777001;
-	static const int DEFAULT_VOLUME = 100;
-	static int m_UserVolume = 100;
+	static const int DEFAULT_VOLUME = 60;
+	static int m_UserVolume = 60;
 	static bool m_VolumeLoaded = false;
 	static bool m_FirstUseChecked = false;
 	static bool m_SessionInitialized = false;
