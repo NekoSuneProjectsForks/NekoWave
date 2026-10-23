@@ -42,6 +42,17 @@ modded class MissionGameplay
 		if (vehicleCommand) car = CarScript.Cast(vehicleCommand.GetTransport());
 		if (car)
 		{
+			// Radio_Fungi car addon uses the "Cassette" vehicle attachment.
+			// This is a conservative coexistence rule, not a playback-state API.
+			// Prefer the in-game cassette whenever one is inserted, and never
+			// change the other mod's actions, audio state, or attachment.
+			EntityAI fungiCassette = car.FindAttachmentBySlotName("Cassette");
+			if (fungiCassette)
+			{
+				LootRadioState.SetVolume0();
+				m_WasWorking = false;
+				return;
+			}
 			int carFrequencyKey = LootRadioState.GetCarFrequencyKey();
 			if (carFrequencyKey > 0 && car.EngineIsOn())
 			{
