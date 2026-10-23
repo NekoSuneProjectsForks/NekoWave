@@ -2,6 +2,7 @@ class CfgMods
 {
 	class LootTeamRadio
 	{
+		name = "NekoWave Radio";
 		type = "mod";
 		dependencies[] = {"Game", "World", "Mission"};
 		class defs
