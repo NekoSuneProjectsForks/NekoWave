@@ -71,6 +71,96 @@
       "frequency": 201.2,
       "name": "Radio Paradise Main Mix",
       "url": "https://stream.radioparadise.com/mp3-128"
+    },
+    {
+      "slotId": 13,
+      "frequency": 201.3,
+      "name": "UK - Heart 80s",
+      "url": "https://media-ssl.musicradio.com/Heart80sMP3"
+    },
+    {
+      "slotId": 14,
+      "frequency": 201.4,
+      "name": "UK - Capital UK",
+      "url": "https://media-ssl.musicradio.com/CapitalUK"
+    },
+    {
+      "slotId": 15,
+      "frequency": 201.5,
+      "name": "UK - BBC World Service",
+      "url": "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service"
+    },
+    {
+      "slotId": 16,
+      "frequency": 201.6,
+      "name": "UK - LBC UK",
+      "url": "http://media-ice.musicradio.com/LBCUK"
+    },
+    {
+      "slotId": 17,
+      "frequency": 201.7,
+      "name": "Canada - CIUT Toronto",
+      "url": "https://ice23.securenetsystems.net/CIUT"
+    },
+    {
+      "slotId": 18,
+      "frequency": 201.8,
+      "name": "Canada - Rock 101 Vancouver",
+      "url": "https://live.leanstream.co/CFMIFM-MP3-2"
+    },
+    {
+      "slotId": 19,
+      "frequency": 201.9,
+      "name": "Canada - CFOX Vancouver",
+      "url": "https://live.leanstream.co/CFOXFM-MP3"
+    },
+    {
+      "slotId": 20,
+      "frequency": 202,
+      "name": "Canada - CJAY 92 Calgary",
+      "url": "https://18393.live.streamtheworld.com/CJAYFM.mp3"
+    },
+    {
+      "slotId": 21,
+      "frequency": 202.1,
+      "name": "Canada - 100.3 The Bear Edmonton",
+      "url": "https://24963.live.streamtheworld.com/CFBRFM.mp3"
+    },
+    {
+      "slotId": 22,
+      "frequency": 202.2,
+      "name": "Canada - RdMix Classic Rock",
+      "url": "https://cast1.torontocast.com:4610/stream"
+    },
+    {
+      "slotId": 23,
+      "frequency": 202.3,
+      "name": "USA - KEXP Seattle",
+      "url": "https://kexp.streamguys1.com/kexp160.aac"
+    },
+    {
+      "slotId": 24,
+      "frequency": 202.4,
+      "name": "USA - WFMU Freeform",
+      "url": "http://stream0.wfmu.org/freeform-128k.mp3"
+    },
+    {
+      "slotId": 25,
+      "frequency": 202.5,
+      "name": "USA - SomaFM Synphaera",
+      "url": "https://ice5.somafm.com/synphaera-128-mp3"
+    },
+    {
+      "slotId": 26,
+      "frequency": 202.6,
+      "name": "USA - SomaFM Synphaera HiFi",
+      "url": "https://ice5.somafm.com/synphaera-256-mp3"
+    },
+    {
+      "slotId": 27,
+      "frequency": 202.7,
+      "name": "Gaming - Simulator Radio",
+      "url": "https://simulatorradio.stream/stream"
     }
   ]
 }
