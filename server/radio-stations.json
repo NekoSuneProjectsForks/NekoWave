@@ -227,6 +227,66 @@
       "frequency": 203.8,
       "name": "Retro Lofi Chiptune Radio",
       "url": "https://a5.asurahosting.com:8150/radio.mp3"
+    },
+    {
+      "slotId": 39,
+      "frequency": 203.9,
+      "name": "Hardstyle - MixStream",
+      "url": "https://radio.mixstream.nl/hardstyle.mp3"
+    },
+    {
+      "slotId": 40,
+      "frequency": 204,
+      "name": "Hardstyle - Platinum",
+      "url": "https://relay.platinumradio.nl/listen/platinum_hardstyle/radio.mp3"
+    },
+    {
+      "slotId": 41,
+      "frequency": 204.1,
+      "name": "Hardstyle FM",
+      "url": "https://hardstylefm.stream.laut.fm/hardstylefm"
+    },
+    {
+      "slotId": 42,
+      "frequency": 204.2,
+      "name": "Real Hardstyle Radio",
+      "url": "https://stream.realhardstyle.nl/"
+    },
+    {
+      "slotId": 43,
+      "frequency": 204.3,
+      "name": "Frenchcore - Technolovers",
+      "url": "https://0nlineradio.radioho.st/technolovers-frenchcore"
+    },
+    {
+      "slotId": 44,
+      "frequency": 204.4,
+      "name": "FrenchcoreRadio EU",
+      "url": "https://212.84.160.3:8959/stream2"
+    },
+    {
+      "slotId": 45,
+      "frequency": 204.5,
+      "name": "Uptempo - FrenchcoreRadio EU",
+      "url": "https://212.84.160.3:8959/stream"
+    },
+    {
+      "slotId": 46,
+      "frequency": 204.6,
+      "name": "FrenchcoreRadio NL",
+      "url": "https://82.145.63.6:6178/stream"
+    },
+    {
+      "slotId": 47,
+      "frequency": 204.7,
+      "name": "Dubstep - SomaFM Dub Step Beyond",
+      "url": "https://ice5.somafm.com/dubstep-128-mp3"
+    },
+    {
+      "slotId": 48,
+      "frequency": 204.8,
+      "name": "Dubstep - SomaFM High Quality",
+      "url": "https://ice5.somafm.com/dubstep-256-mp3"
     }
   ]
 }
