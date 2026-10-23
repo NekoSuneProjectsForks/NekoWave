@@ -30,7 +30,7 @@
 		string cmd = text;
 		cmd.ToLower();
 		if (cmd.IndexOf("!radio") != 0) return;
-		if (cmd == "!radio car" || cmd == "!radio car off" || cmd.IndexOf("!radio car ") == 0)
+		if (cmd == "!radio car" || cmd == "!radio car off" || cmd == "!radio car fungi" || cmd.IndexOf("!radio car ") == 0)
 		{
 			RadioSetPlayerCarStation(from, cmd);
 			return;
