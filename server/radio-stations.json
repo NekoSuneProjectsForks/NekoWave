@@ -47,6 +47,30 @@
       "frequency": 102.5,
       "name": "Capital FM UK",
       "url": "https://media-ice.musicradio.com/CapitalMP3"
+    },
+    {
+      "slotId": 9,
+      "frequency": 200.9,
+      "name": "SomaFM Groove Salad",
+      "url": "https://ice1.somafm.com/groovesalad-128-mp3"
+    },
+    {
+      "slotId": 10,
+      "frequency": 201,
+      "name": "SomaFM Drone Zone",
+      "url": "https://ice1.somafm.com/dronezone-128-mp3"
+    },
+    {
+      "slotId": 11,
+      "frequency": 201.1,
+      "name": "SomaFM Secret Agent",
+      "url": "https://ice1.somafm.com/secretagent-128-mp3"
+    },
+    {
+      "slotId": 12,
+      "frequency": 201.2,
+      "name": "Radio Paradise Main Mix",
+      "url": "https://stream.radioparadise.com/mp3-128"
     }
   ]
 }
