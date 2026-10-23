@@ -1,4 +1,4 @@
-# Server integration / Встраивание на сервер
+# NekoWave Radio server integration / Встраивание на сервер
 
 **Do not replace your entire `mpmissions/<mission>/init.c`.**
 Back it up first. `server/mission-radio-snippet.c` is a **reference snippet**;
@@ -27,9 +27,7 @@ client mod alone cannot configure a server mission.
 4. Install the matching signed client mod on server and distribute its `.bikey`
    into the server `keys/` directory. Copy [`server/meta.cpp`](../server/meta.cpp)
    to the root of the server's `@LootTeamRadio/` directory, next to `mod.cpp`
-   and `addons/`. Its `publishedid = 3816734792` links the server mod to the
-   [existing Workshop item](https://steamcommunity.com/sharedfiles/filedetails/?id=3816734792)
-   for launcher auto-download; keep the name and timestamp from this release.
+   and `addons/`. Its `publishedid = 0` intentionally does not advertise the original project's Workshop item. Once this fork has its own published Workshop item, replace `0` with that new ID. Keep upstream author credit in the README.
    Do **not** place it inside the PBO or under `server/` on the DayZ host.
    With all required mods signed, use `verifySignatures=2`; do not disable
    verification for public servers.
