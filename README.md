@@ -36,7 +36,7 @@ Server admins can edit the station catalogue in `$profile:DayZRadio/radio-statio
 
 The server accepts 8–48 ordered station entries in `$profile:DayZRadio/radio-stations.json`. The first eight retain their original physical handheld frequencies. Extra stations are **vehicle-only** and must use sequential slot IDs and unique virtual frequency keys: slot 9 uses `frequency: 200.9`, slot 10 uses `201.0`, and slot 48 uses `204.8` (formula: `(2000 + slotId) / 10`). These are internal identifiers, not actual DayZ radio frequencies.
 
-The included sample now has **38 stations**, spanning UK radio, Canadian stations, US independent stations, gaming radio, SomaFM, Radio Paradise, TruckersFM, and NekoSune Community Radio. Live endpoints can change or have geographic and licensing restrictions; test them before running a public server. Add/edit entries on the server and run admin `!radio reload` to send the new list to connected players. Clients must use this updated mod version.
+The included sample now has **48 stations**, spanning UK radio, Canadian stations, US independent stations, gaming radio, SomaFM, Radio Paradise, TruckersFM, and NekoSune Community Radio. Live endpoints can change or have geographic and licensing restrictions; test them before running a public server. Add/edit entries on the server and run admin `!radio reload` to send the new list to connected players. Clients must use this updated mod version.
 
 **GUI status:** An in-game search/category/favourites interface is still planned, not yet implemented. Until then, select extra stations with `!radio car 9`, `!radio car 10` etc.
 
@@ -56,6 +56,12 @@ These are example stream presets, not endorsements, and they have not been teste
 - SomaFM Cliqhop IDM and Retro Lofi Chiptune Radio.
 
 These are third-party direct stream addresses, **not official NCS broadcasts**. The CLIAMP chiptune and Amiga stations may be temporarily quiet. Official Monstercat and Chillhop services provide listening channels, but no independently verified, stable, directly usable MPC-HC stream URLs were added for them; do not mistake a web player URL or YouTube live URL for an MP3 stream. Check third-party terms, licensing, uptime and regional availability.
+
+### Hardstyle, uptempo, frenchcore and dubstep
+
+Slots **39–48** include MixStream Hardstyle, Platinum Hardstyle, Hardstyle FM, Real Hardstyle Radio, Technolovers Frenchcore, two FrenchcoreRadio.eu endpoints (including a channel carrying uptempo mixes), FrenchcoreRadio.nl, and two SomaFM Dub Step Beyond quality options.
+
+All catalogue slots are now filled (**48/48**). These are third-party streams that might be offline, have certificate/redirect issues, or limit access by region. In particular, direct HTTPS links to IP addresses may fail certificate validation on some players. Test each URL in MPC-HC from the client PC before using it. The two SomaFM entries are the same channel at different bitrates, and should not be described as separate programming.
 
 ## Radio_Fungi coexistence
 
