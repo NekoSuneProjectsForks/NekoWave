@@ -30,6 +30,11 @@
 		string cmd = text;
 		cmd.ToLower();
 		if (cmd.IndexOf("!radio") != 0) return;
+		if (cmd == "!radio car" || cmd == "!radio car off" || cmd.IndexOf("!radio car ") == 0)
+		{
+			RadioSetPlayerCarStation(from, cmd);
+			return;
+		}
 		if (cmd == "!radio help")
 		{
 			RadioSendHelp(from);
@@ -80,6 +85,31 @@
 		string url = args.Substring(comma1 + 1, comma2 - comma1 - 1);
 		string name = args.Substring(comma2 + 1, args.Length() - comma2 - 1);
 		RadioSetStation(slot, url, name);
+	}
+
+	// Route vehicle preset to the requesting player, refusing ambiguous player names.
+	void RadioSetPlayerCarStation(string playerName, string command)
+	{
+		string value = "off";
+		if (command == "!radio car") value = "1";
+		else if (command != "!radio car off")
+		{
+			value = command.Substring(11, command.Length() - 11);
+			if (value.Length() != 1 || value.ToInt() < 1 || value.ToInt() > 8 || value.ToInt().ToString() != value) return;
+		}
+		array<Man> players = new array<Man>;
+		GetGame().GetPlayers(players);
+		PlayerIdentity target;
+		for (int p = 0; p < players.Count(); p++)
+		{
+			PlayerIdentity identity = players[p].GetIdentity();
+			if (identity && identity.GetName() == playerName)
+			{
+				if (target) return;
+				target = identity;
+			}
+		}
+		if (target) GetGame().RPCSingleParam(null, 777004, new Param1<string>(value), true, target);
 	}
 
 	void RadioSendHelp(string playerName)
