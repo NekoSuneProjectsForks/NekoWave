@@ -19,8 +19,8 @@ client mod alone cannot configure a server mission.
 3. Put `server/radio-stations.json` into `$mission:radio-stations.json`.
    On the first successful start it is copied to
    `$profile:DayZRadio/radio-stations.json` — **later edit that profile copy**
-   (the mission file is only an initial default). Server validates exactly
-   eight fixed frequencies; only slots with both a name and URL play. The
+   (the mission file is only an initial default). Server validates 8–48 station entries, preserving the first
+   eight fixed handheld frequencies; only slots with both a name and URL play. The
    supplied presets include TruckersFM, NekoSune Community Radio, NCS-themed
    channels and Capital FM UK. Verify the streams from client PCs, including
    licensing, geo-availability and capacity, before enabling on a live server.
@@ -104,3 +104,8 @@ It does not alter or stop Radio_Fungi's sounds, and it is not a guarantee of
 compatibility with all versions, boats, or third-party vehicle packs. Test the
 vehicle slot name, both mods and playback on a staging DayZ server. The
 livestream remains local MPC-HC audio, not shared vehicle sound.
+
+
+### Extended station catalogue
+
+The first eight entries keep their original fixed frequencies. Add consecutive `slotId` values from 9 through 48 for car-only streams; set `frequency` to `(2000 + slotId) / 10` (for example, slot 9 = `200.9`). The vehicle controls accept two-digit preset numbers, e.g. `!radio car 12`. The first eight still work on handheld radios. Edit the active `$profile:DayZRadio/radio-stations.json`, then use `!radio reload`. Do not assume that a new station stream is licensed or globally available. The GUI remains planned; it is not part of this change.
