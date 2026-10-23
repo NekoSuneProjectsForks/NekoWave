@@ -6,7 +6,7 @@ Live internet radio for DayZ handheld radios and vehicles, with experimental Rad
 
 ## Features
 
-- Eight configurable internet radio stations, including TruckersFM, NekoSune Community Radio, NCS-themed streams and Capital FM UK.
+- 8–48 configurable internet radio stations, including TruckersFM, NekoSune Community Radio, NCS-themed streams and Capital FM UK.
 - In-car radio presets using chat commands, without needing a handheld radio item.
 - Existing Personal Radio support.
 - Radio_Fungi coexistence: automatically pauses the livestream when a cassette is detected in a vehicle's `Cassette` attachment slot.
@@ -23,14 +23,22 @@ Live internet radio for DayZ handheld radios and vehicles, with experimental Rad
 
 | Command | Function |
 | --- | --- |
-| `!radio car 1` to `!radio car 8` | Choose a vehicle livestream station |
+| `!radio car 1` to `!radio car 48` | Choose a vehicle livestream station |
 | `!radio car` | Select vehicle preset 1 |
 | `!radio car off` | Turn off the vehicle livestream |
 | `!radio car fungi` | Turn off the livestream before using Radio_Fungi |
 | `!radio 50` | Set personal radio volume to 50% (0-100) |
 | `!radio help` | Display player help |
 
-Server admins can edit the eight presets in `$profile:DayZRadio/radio-stations.json`. See [server setup](docs/SERVER.md) and [build instructions](docs/BUILD.md).
+Server admins can edit the station catalogue in `$profile:DayZRadio/radio-stations.json`. See [server setup](docs/SERVER.md) and [build instructions](docs/BUILD.md).
+
+## More stations
+
+The server accepts 8–48 ordered station entries in `$profile:DayZRadio/radio-stations.json`. The first eight retain their original physical handheld frequencies. Extra stations are **vehicle-only** and must use sequential slot IDs and unique virtual frequency keys: slot 9 uses `frequency: 200.9`, slot 10 uses `201.0`, and slot 48 uses `204.8` (formula: `(2000 + slotId) / 10`). These are internal identifiers, not actual DayZ radio frequencies.
+
+The included sample now has 12 stations; the four new samples are candidate SomaFM and Radio Paradise endpoints whose availability and permitted usage must be checked. Add/edit entries on the server and run admin `!radio reload` to send the new list to connected players. Clients must use this updated mod version.
+
+**GUI status:** An in-game search/category/favourites interface is still planned, not yet implemented. Until then, select extra stations with `!radio car 9`, `!radio car 10` etc.
 
 ## Radio_Fungi coexistence
 
