@@ -69,7 +69,6 @@ modded class MissionGameplay
 			}
 			return;
 		}
-		if (LootRadioState.m_CarStationSlot >= 1) LootRadioState.SetVolume0();
 		EntityAI hands = player.GetHumanInventory().GetEntityInHands();
 		ItemTransmitter tx = ItemTransmitter.Cast(hands);
 
