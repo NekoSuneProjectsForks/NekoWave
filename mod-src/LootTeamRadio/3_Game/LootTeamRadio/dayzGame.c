@@ -3,6 +3,12 @@ modded class DayZGame
 {
 	override void OnRPC(PlayerIdentity sender, Object target, int rpc_type, ParamsReadContext ctx)
 	{
+		if (rpc_type == 777004 && !target)
+		{
+			Param1<string> preset = new Param1<string>("");
+			if (ctx.Read(preset)) LootRadioState.SetCarStation(preset.param1);
+			return;
+		}
 		if (rpc_type == 777003 && !target)
 		{
 			Param1<string> help = new Param1<string>("");
