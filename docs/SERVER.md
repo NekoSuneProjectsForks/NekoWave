@@ -68,7 +68,7 @@ integration adapter rather than replacing either mod's internals.
 
 ### Car radio controls (per player)
 
-Inside a vehicle with its engine running, `!radio car` selects preset 1,
+Inside a vehicle with its engine running, `!radio car fungi` disables the livestream before using Radio_Fungi cassette controls. `!radio car` selects preset 1,
 `!radio car 1` through `!radio car 8` select any of the eight configured
 stations, and `!radio car off` disables car radio playback. The car radio
 uses RPC 777004 and requires both the updated mission integration and client
