@@ -21,7 +21,7 @@ Live internet radio for DayZ handheld radios and vehicles, with experimental Rad
 
 ## In-game station menu (experimental)
 
-A new toggleable radio panel is included. In DayZ **Settings > Controls**, assign a key to the **NekoWave radio menu** action (the binding is intentionally empty by default to avoid conflicts with existing controls).
+A new toggleable radio panel is included. In DayZ **Settings > Controls**, find **NekoWave Radio → Toggle Radio Menu**. The default is **F7**, and you can remap or clear it just like other DayZ controls. Some other mods may also use F7, so change it if there is a conflict.
 
 - **In a vehicle:** press your assigned hotkey to open/close the station picker; browse eight stations per page, select any of the 48 presets or switch the stream off. Radio_Fungi cassette attachments still have priority.
 - **With a Personal Radio in your hands:** the same hotkey opens the station catalogue, but the eight handheld FM frequencies must still be tuned on the physical radio. Vehicle-only slots 9–48 cannot be tuned on an unmodified handheld.
