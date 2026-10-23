@@ -39,6 +39,33 @@ client mod alone cannot configure a server mission.
    script compilation fails. The example mod does **not** start eight Icecast
    processes: the seven empty slots remain intentionally silent.
 
+### Running alongside another car-radio or cassette mod
+
+LootTeamRadio's car mode is a separate **opt-in player-side stream**. It does
+not register tape items, change the other mod's tuning actions, or patch the
+other mod's classes. This makes co-installation possible in principle, but it
+is not proof of compatibility with any particular Workshop release.
+
+The optional second system referenced by the community is:
+https://steamcommunity.com/sharedfiles/filedetails/?id=3433858227
+
+The other mod's scripts were not available for review, so **compatibility
+has not been verified**. Install both on a staging server and check DayZ
+script errors and action menus before deploying publicly.
+
+For players: use `!radio car off` before using the cassette radio. Otherwise
+the two unrelated audio players can be audible simultaneously. The livestream
+is local to MPC-HC, and the cassette mod retains its own playback/controls.
+Switching to a cassette does not automatically stop LootTeamRadio, because
+there is no verified API to detect cassette playback.
+
+For administrators: keep both mods installed as separate signed client mods,
+include their declared dependencies, and retain the LootTeamRadio mission RPC
+integration. Do **not** rename or overwrite the other mod's classes, car
+actions, or JSON configuration. If duplicate input actions, class collisions,
+or UI conflicts occur, inspect both mods' actual scripts and add a dedicated
+integration adapter rather than replacing either mod's internals.
+
 ### Car radio controls (per player)
 
 Inside a vehicle with its engine running, `!radio car` selects preset 1,
