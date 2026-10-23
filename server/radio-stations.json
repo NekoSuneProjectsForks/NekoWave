@@ -9,44 +9,44 @@
     {
       "slotId": 2,
       "frequency": 89.5,
-      "name": "",
-      "url": ""
+      "name": "TruckersFM",
+      "url": "https://live.truckers.fm/"
     },
     {
       "slotId": 3,
       "frequency": 91.3,
-      "name": "",
-      "url": ""
+      "name": "NekoSune Community Radio",
+      "url": "https://radiocp.nekosunevr.co.uk/listen/nekosune_community_radio/radio.mp3"
     },
     {
       "slotId": 4,
       "frequency": 91.9,
-      "name": "",
-      "url": ""
+      "name": "NCS Radio",
+      "url": "https://radio.cliamp.stream/ncs/stream"
     },
     {
       "slotId": 5,
       "frequency": 94.6,
-      "name": "",
-      "url": ""
+      "name": "NCS House",
+      "url": "https://radio.cliamp.stream/ncs-house/stream"
     },
     {
       "slotId": 6,
       "frequency": 96.6,
-      "name": "",
-      "url": ""
+      "name": "NCS Drum and Bass",
+      "url": "https://radio.cliamp.stream/ncs-dnb/stream"
     },
     {
       "slotId": 7,
       "frequency": 99.7,
-      "name": "",
-      "url": ""
+      "name": "NCS Chill",
+      "url": "https://radio.cliamp.stream/ncs-chill/stream"
     },
     {
       "slotId": 8,
       "frequency": 102.5,
-      "name": "",
-      "url": ""
+      "name": "Capital FM UK",
+      "url": "https://media-ice.musicradio.com/CapitalMP3"
     }
   ]
 }
