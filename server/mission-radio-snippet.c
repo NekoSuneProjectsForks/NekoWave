@@ -69,7 +69,7 @@
 		if (cmd.IndexOf("!radio clear ") == 0)
 		{
 			string slotText = text.Substring(13, text.Length() - 13);
-			if (slotText.Length() != 1 || slotText.ToInt() < 1 || slotText.ToInt() > 8 || slotText.ToInt().ToString() != slotText) return;
+			if (slotText.Length() < 1 || slotText.Length() > 2 || slotText.ToInt() < 1 || slotText.ToInt() > m_RadioStations.stations.Count() || slotText.ToInt().ToString() != slotText) return;
 			RadioSetStation(slotText.ToInt(), "", "");
 			return;
 		}
@@ -80,7 +80,7 @@
 		int comma2 = args.IndexOfFrom(comma1 + 1, ",");
 		if (comma2 <= comma1 + 1) return;
 		string slotTextSet = args.Substring(0, comma1);
-		if (slotTextSet.Length() != 1 || slotTextSet.ToInt() < 1 || slotTextSet.ToInt() > 8 || slotTextSet.ToInt().ToString() != slotTextSet) return;
+		if (slotTextSet.Length() < 1 || slotTextSet.Length() > 2 || slotTextSet.ToInt() < 1 || slotTextSet.ToInt() > m_RadioStations.stations.Count() || slotTextSet.ToInt().ToString() != slotTextSet) return;
 		int slot = slotTextSet.ToInt();
 		string url = args.Substring(comma1 + 1, comma2 - comma1 - 1);
 		string name = args.Substring(comma2 + 1, args.Length() - comma2 - 1);
