@@ -1,4 +1,4 @@
-// Loot.Team Radio — client-side state + MPC-HC controller (Phase 3)
+// NekoWave Radio — client-side state + MPC-HC controller (Phase 3)
 // Сервер раздаёт карту частот (RPC 777001), мод:
 //  1) пишет $profile:DayZRadio/stations.m3u (плейлист = слоты частот);
 //  2) находит абсолютный путь через API MPC-HC (browse.json);
@@ -56,6 +56,30 @@ class LootRadioState
 	// MPC-HC on the same PC; Linux test host forwards this port to the Windows VM.
 	static const string MPC_BASE = "http://127.0.0.1:13579/";
 	static const int MUSIC_RPC_ID = 777001;
+	static int m_CarStationSlot = -1;
+	static void SetCarStation(string value)
+	{
+		if (value == "off")
+		{
+			m_CarStationSlot = -1;
+			SetVolume0();
+			NotificationSystem.AddNotificationExtended(4.0, "Car radio", "Off");
+			return;
+		}
+		if (value.Length() < 1 || value.Length() > 2 || value.ToInt() < 1 || value.ToInt() > 48 || value.ToInt().ToString() != value) return;
+		m_CarStationSlot = value.ToInt();
+		NotificationSystem.AddNotificationExtended(4.0, "Car radio", "Preset " + value);
+	}
+	static int GetCarFrequencyKey()
+	{
+		if (m_CarStationSlot < 1 || !s_SlotIds) return -1;
+		for (int i = 0; i < s_SlotIds.Count(); i++)
+		{
+			int key = s_SlotIds.GetKey(i);
+			if (s_SlotIds.Get(key) == m_CarStationSlot) return key;
+		}
+		return -1;
+	}
 	static const int DEFAULT_VOLUME = 60;
 	static int m_UserVolume = 60;
 	static bool m_VolumeLoaded = false;
@@ -334,7 +358,7 @@ class LootRadioState
 		if (data == m_LastSnapshot) return;
 		array<string> incoming = new array<string>();
 		data.Split(";", incoming);
-		if (incoming.Count() != 8)
+		if (incoming.Count() < 8 || incoming.Count() > 48)
 		{
 			Print("[LootRadio] invalid station snapshot, keeping current stations");
 			return;
@@ -359,7 +383,7 @@ class LootRadioState
 			{
 				int slotId = parts[0].ToInt();
 				int freqKey = parts[1].ToInt();
-				if (slotId < 1 || slotId > 8 || freqKey <= 0 || s_SlotIds.Contains(freqKey)) continue;
+				if (slotId < 1 || slotId > incoming.Count() || freqKey <= 0 || s_SlotIds.Contains(freqKey)) continue;
 				s_AllFrequencies.Insert(freqKey);
 				s_SlotIds.Insert(freqKey, slotId);
 				if (parts[3] != "-")
@@ -383,7 +407,7 @@ class LootRadioState
 			keys.Remove(best);
 		}
 
-		if (s_AllFrequencies.Count() != 8)
+		if (s_AllFrequencies.Count() != incoming.Count())
 		{
 			Print("[LootRadio] incomplete station snapshot; ignoring");
 			m_LastSnapshot = data;
@@ -449,7 +473,7 @@ class LootRadioState
 		foreach (int fkey : s_FreqOrder)
 		{
 			float freq = fkey * 0.1;
-			FPrintln(f, "#EXTINF:-1," + s_Names.Get(fkey) + " (" + freq.ToString() + " MHz)");
+			FPrintln(f, "#EXTINF:-1," + s_Names.Get(fkey));
 			FPrintln(f, s_Stations.Get(fkey));
 		}
 		CloseFile(f);

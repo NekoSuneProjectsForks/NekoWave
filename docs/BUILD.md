@@ -1,13 +1,20 @@
-# Building and signing
+# Building and signing NekoWave Radio
 
-The PBO root is `mod-src/LootTeamRadio/`, containing `$PBOPREFIX$` set to
-`LootTeamRadio` and a matching `config.cpp`. PBO names, folder and `CfgMods`
+The mod's internal script paths, PBO prefix and config identifiers now use **NekoWave**.
+Rebuild and resign the mod after this change.
+
+The PBO root is `mod-src/NekoWave/`, containing `$PBOPREFIX$` set to
+`NekoWave` and a matching `config.cpp`. PBO names, folder and `CfgMods`
 must agree. From the project directory, on a machine with armake2:
 
 ```sh
-armake2 build mod-src/LootTeamRadio LootTeamRadio.pbo
-armake2 inspect LootTeamRadio.pbo
+armake2 build mod-src/NekoWave NekoWave.pbo
+armake2 inspect NekoWave.pbo
 ```
+
+Publish this fork as its **own** Workshop item. Do not reuse the original
+LootTeamRadio Workshop ID; `server/meta.cpp` uses `publishedid = 0` until
+an authorized new ID is assigned. Update that value only after publishing.
 
 Use **DayZ Tools / Publisher** in the owner's authorized Windows Steam session
 to generate/sign with a DayZ-compatible key and upload to Workshop. Keep

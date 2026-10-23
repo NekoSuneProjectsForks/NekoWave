@@ -9,44 +9,284 @@
     {
       "slotId": 2,
       "frequency": 89.5,
-      "name": "",
-      "url": ""
+      "name": "TruckersFM",
+      "url": "https://live.truckers.fm/"
     },
     {
       "slotId": 3,
       "frequency": 91.3,
-      "name": "",
-      "url": ""
+      "name": "NekoSune Community Radio",
+      "url": "https://radiocp.nekosunevr.co.uk/listen/nekosune_community_radio/radio.mp3"
     },
     {
       "slotId": 4,
       "frequency": 91.9,
-      "name": "",
-      "url": ""
+      "name": "NCS Radio",
+      "url": "https://radio.cliamp.stream/ncs/stream"
     },
     {
       "slotId": 5,
       "frequency": 94.6,
-      "name": "",
-      "url": ""
+      "name": "NCS House",
+      "url": "https://radio.cliamp.stream/ncs-house/stream"
     },
     {
       "slotId": 6,
       "frequency": 96.6,
-      "name": "",
-      "url": ""
+      "name": "NCS Drum and Bass",
+      "url": "https://radio.cliamp.stream/ncs-dnb/stream"
     },
     {
       "slotId": 7,
       "frequency": 99.7,
-      "name": "",
-      "url": ""
+      "name": "NCS Chill",
+      "url": "https://radio.cliamp.stream/ncs-chill/stream"
     },
     {
       "slotId": 8,
       "frequency": 102.5,
-      "name": "",
-      "url": ""
+      "name": "Capital FM UK",
+      "url": "https://media-ice.musicradio.com/CapitalMP3"
+    },
+    {
+      "slotId": 9,
+      "frequency": 200.9,
+      "name": "SomaFM Groove Salad",
+      "url": "https://ice1.somafm.com/groovesalad-128-mp3"
+    },
+    {
+      "slotId": 10,
+      "frequency": 201,
+      "name": "SomaFM Drone Zone",
+      "url": "https://ice1.somafm.com/dronezone-128-mp3"
+    },
+    {
+      "slotId": 11,
+      "frequency": 201.1,
+      "name": "SomaFM Secret Agent",
+      "url": "https://ice1.somafm.com/secretagent-128-mp3"
+    },
+    {
+      "slotId": 12,
+      "frequency": 201.2,
+      "name": "Radio Paradise Main Mix",
+      "url": "https://stream.radioparadise.com/mp3-128"
+    },
+    {
+      "slotId": 13,
+      "frequency": 201.3,
+      "name": "UK - Heart 80s",
+      "url": "https://media-ssl.musicradio.com/Heart80sMP3"
+    },
+    {
+      "slotId": 14,
+      "frequency": 201.4,
+      "name": "UK - Capital UK",
+      "url": "https://media-ssl.musicradio.com/CapitalUK"
+    },
+    {
+      "slotId": 15,
+      "frequency": 201.5,
+      "name": "UK - BBC World Service",
+      "url": "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service"
+    },
+    {
+      "slotId": 16,
+      "frequency": 201.6,
+      "name": "UK - LBC UK",
+      "url": "http://media-ice.musicradio.com/LBCUK"
+    },
+    {
+      "slotId": 17,
+      "frequency": 201.7,
+      "name": "Canada - CIUT Toronto",
+      "url": "https://ice23.securenetsystems.net/CIUT"
+    },
+    {
+      "slotId": 18,
+      "frequency": 201.8,
+      "name": "Canada - Rock 101 Vancouver",
+      "url": "https://live.leanstream.co/CFMIFM-MP3-2"
+    },
+    {
+      "slotId": 19,
+      "frequency": 201.9,
+      "name": "Canada - CFOX Vancouver",
+      "url": "https://live.leanstream.co/CFOXFM-MP3"
+    },
+    {
+      "slotId": 20,
+      "frequency": 202,
+      "name": "Canada - CJAY 92 Calgary",
+      "url": "https://18393.live.streamtheworld.com/CJAYFM.mp3"
+    },
+    {
+      "slotId": 21,
+      "frequency": 202.1,
+      "name": "Canada - 100.3 The Bear Edmonton",
+      "url": "https://24963.live.streamtheworld.com/CFBRFM.mp3"
+    },
+    {
+      "slotId": 22,
+      "frequency": 202.2,
+      "name": "Canada - RdMix Classic Rock",
+      "url": "https://cast1.torontocast.com:4610/stream"
+    },
+    {
+      "slotId": 23,
+      "frequency": 202.3,
+      "name": "USA - KEXP Seattle",
+      "url": "https://kexp.streamguys1.com/kexp160.aac"
+    },
+    {
+      "slotId": 24,
+      "frequency": 202.4,
+      "name": "USA - WFMU Freeform",
+      "url": "http://stream0.wfmu.org/freeform-128k.mp3"
+    },
+    {
+      "slotId": 25,
+      "frequency": 202.5,
+      "name": "USA - SomaFM Synphaera",
+      "url": "https://ice5.somafm.com/synphaera-128-mp3"
+    },
+    {
+      "slotId": 26,
+      "frequency": 202.6,
+      "name": "USA - SomaFM Synphaera HiFi",
+      "url": "https://ice5.somafm.com/synphaera-256-mp3"
+    },
+    {
+      "slotId": 27,
+      "frequency": 202.7,
+      "name": "Gaming - Simulator Radio",
+      "url": "https://simulatorradio.stream/stream"
+    },
+    {
+      "slotId": 28,
+      "frequency": 202.8,
+      "name": "NCS Dubstep (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-dubstep/stream"
+    },
+    {
+      "slotId": 29,
+      "frequency": 202.9,
+      "name": "NCS Trap (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-trap/stream"
+    },
+    {
+      "slotId": 30,
+      "frequency": 203,
+      "name": "NCS Phonk (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-phonk/stream"
+    },
+    {
+      "slotId": 31,
+      "frequency": 203.1,
+      "name": "NCS Pop (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-pop/stream"
+    },
+    {
+      "slotId": 32,
+      "frequency": 203.2,
+      "name": "Lofi Hip Hop (cliamp)",
+      "url": "https://radio.cliamp.stream/lofi/stream"
+    },
+    {
+      "slotId": 33,
+      "frequency": 203.3,
+      "name": "Synthwave (cliamp)",
+      "url": "https://radio.cliamp.stream/synthwave/stream"
+    },
+    {
+      "slotId": 34,
+      "frequency": 203.4,
+      "name": "EDM (cliamp)",
+      "url": "https://radio.cliamp.stream/edm/stream"
+    },
+    {
+      "slotId": 35,
+      "frequency": 203.5,
+      "name": "Chiptunes (cliamp)",
+      "url": "https://radio.cliamp.stream/chiptune/stream"
+    },
+    {
+      "slotId": 36,
+      "frequency": 203.6,
+      "name": "Amiga Tracker (cliamp)",
+      "url": "https://radio.cliamp.stream/amiga/stream"
+    },
+    {
+      "slotId": 37,
+      "frequency": 203.7,
+      "name": "SomaFM Cliqhop IDM",
+      "url": "https://ice5.somafm.com/cliqhop-128-mp3"
+    },
+    {
+      "slotId": 38,
+      "frequency": 203.8,
+      "name": "Retro Lofi Chiptune Radio",
+      "url": "https://a5.asurahosting.com:8150/radio.mp3"
+    },
+    {
+      "slotId": 39,
+      "frequency": 203.9,
+      "name": "Hardstyle - MixStream",
+      "url": "https://radio.mixstream.nl/hardstyle.mp3"
+    },
+    {
+      "slotId": 40,
+      "frequency": 204,
+      "name": "Hardstyle - Platinum",
+      "url": "https://relay.platinumradio.nl/listen/platinum_hardstyle/radio.mp3"
+    },
+    {
+      "slotId": 41,
+      "frequency": 204.1,
+      "name": "Hardstyle FM",
+      "url": "https://hardstylefm.stream.laut.fm/hardstylefm"
+    },
+    {
+      "slotId": 42,
+      "frequency": 204.2,
+      "name": "Real Hardstyle Radio",
+      "url": "https://stream.realhardstyle.nl/"
+    },
+    {
+      "slotId": 43,
+      "frequency": 204.3,
+      "name": "Frenchcore - Technolovers",
+      "url": "https://0nlineradio.radioho.st/technolovers-frenchcore"
+    },
+    {
+      "slotId": 44,
+      "frequency": 204.4,
+      "name": "FrenchcoreRadio EU",
+      "url": "https://212.84.160.3:8959/stream2"
+    },
+    {
+      "slotId": 45,
+      "frequency": 204.5,
+      "name": "Uptempo - FrenchcoreRadio EU",
+      "url": "https://212.84.160.3:8959/stream"
+    },
+    {
+      "slotId": 46,
+      "frequency": 204.6,
+      "name": "FrenchcoreRadio NL",
+      "url": "https://82.145.63.6:6178/stream"
+    },
+    {
+      "slotId": 47,
+      "frequency": 204.7,
+      "name": "Dubstep - SomaFM Dub Step Beyond",
+      "url": "https://ice5.somafm.com/dubstep-128-mp3"
+    },
+    {
+      "slotId": 48,
+      "frequency": 204.8,
+      "name": "Dubstep - SomaFM High Quality",
+      "url": "https://ice5.somafm.com/dubstep-256-mp3"
     }
   ]
 }
