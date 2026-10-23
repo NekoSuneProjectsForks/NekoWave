@@ -36,6 +36,40 @@ modded class MissionGameplay
 			return;
 		}
 
+		// Car radio is private to each occupant and uses the same MPC-HC playlist.
+		HumanCommandVehicle vehicleCommand = player.GetCommand_Vehicle();
+		CarScript car;
+		if (vehicleCommand) car = CarScript.Cast(vehicleCommand.GetTransport());
+		if (car)
+		{
+			int carFrequencyKey = LootRadioState.GetCarFrequencyKey();
+			if (carFrequencyKey > 0 && car.EngineIsOn())
+			{
+				int carNow = GetGame().GetTime();
+				if (!m_ConnectionChecked || carNow - m_LastConnectionCheck >= 60000)
+				{
+					m_ConnectionChecked = true;
+					m_LastConnectionCheck = carNow;
+					LootRadioState.CheckPlayerConnection();
+				}
+				LootRadioState.PlayStation(carFrequencyKey);
+				if (!m_WasWorking || carFrequencyKey != m_AnnouncedFrequency)
+				{
+					string stationName = "Channel available";
+					if (LootRadioState.s_Names && LootRadioState.s_Names.Contains(carFrequencyKey)) stationName = LootRadioState.s_Names.Get(carFrequencyKey);
+					NotificationSystem.AddNotificationExtended(5.0, "Car radio: preset " + LootRadioState.m_CarStationSlot.ToString(), stationName);
+					m_AnnouncedFrequency = carFrequencyKey;
+				}
+				m_WasWorking = true;
+			}
+			else
+			{
+				LootRadioState.SetVolume0();
+				m_WasWorking = false;
+			}
+			return;
+		}
+		if (LootRadioState.m_CarStationSlot >= 1) LootRadioState.SetVolume0();
 		EntityAI hands = player.GetHumanInventory().GetEntityInHands();
 		ItemTransmitter tx = ItemTransmitter.Cast(hands);
 
