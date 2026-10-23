@@ -1,17 +1,15 @@
 # Building and signing NekoWave Radio
 
-The public-facing mod name is **NekoWave Radio**. Internal compatibility identifiers
-remain **LootTeamRadio** for this release. This includes the PBO name,
-folder names, and `CfgMods` class; do not rename them without a separate
-migration and real DayZ build/testing pass.
+The mod's internal script paths, PBO prefix and config identifiers now use **NekoWave**.
+Rebuild and resign the mod after this change.
 
-The PBO root is `mod-src/LootTeamRadio/`, containing `$PBOPREFIX$` set to
-`LootTeamRadio` and a matching `config.cpp`. PBO names, folder and `CfgMods`
+The PBO root is `mod-src/NekoWave/`, containing `$PBOPREFIX$` set to
+`NekoWave` and a matching `config.cpp`. PBO names, folder and `CfgMods`
 must agree. From the project directory, on a machine with armake2:
 
 ```sh
-armake2 build mod-src/LootTeamRadio LootTeamRadio.pbo
-armake2 inspect LootTeamRadio.pbo
+armake2 build mod-src/NekoWave NekoWave.pbo
+armake2 inspect NekoWave.pbo
 ```
 
 Publish this fork as its **own** Workshop item. Do not reuse the original

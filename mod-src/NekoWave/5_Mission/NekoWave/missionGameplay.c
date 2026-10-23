@@ -1,4 +1,4 @@
-// Loot.Team Radio — client mission hooks (Phase 3)
+// NekoWave Radio — client mission hooks (Phase 3)
 // OnUpdate: опрос Personal Radio в руках; RPC 777001 обрабатывается в DayZGame.
 
 modded class MissionGameplay

@@ -41,6 +41,6 @@ Compatibility with Radio_Fungi and different vehicle mods is **not yet verified 
 ## Development and credits
 
 - **Original mod:** [offmonreal/LootTeamRadio](https://github.com/offmonreal/LootTeamRadio)
-- **Enhanced fork:** [NekoSuneProjectsForks/LootTeamRadio](https://github.com/NekoSuneProjectsForks/LootTeamRadio)
-- Internally, the `LootTeamRadio` script and PBO identifiers are retained for compatibility.
+- **Enhanced fork:** [NekoSuneProjectsForks/NekoWave](https://github.com/NekoSuneProjectsForks/NekoWave)
+- Internal mod and PBO identifiers are now `NekoWave`. Rebuild and reinstall after upgrading; existing player settings remain under `$profile:DayZRadio`.
 - DayZ, MPC-HC, and Radio_Fungi belong to their respective owners.

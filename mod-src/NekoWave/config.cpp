@@ -1,6 +1,6 @@
 class CfgMods
 {
-	class LootTeamRadio
+	class NekoWave
 	{
 		name = "NekoWave Radio";
 		type = "mod";
@@ -10,19 +10,19 @@ class CfgMods
 			class gameScriptModule
 			{
 				value = "";
-				files[] = {"LootTeamRadio/3_Game"};
+				files[] = {"NekoWave/3_Game"};
 			};
 			class missionScriptModule
 			{
 				value = "";
-				files[] = {"LootTeamRadio/5_Mission"};
+				files[] = {"NekoWave/5_Mission"};
 			};
 		};
 	};
 };
 class CfgPatches
 {
-	class LootTeamRadio
+	class NekoWave
 	{
 		units[] = {};
 		weapons[] = {};
