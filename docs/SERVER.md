@@ -21,7 +21,9 @@ client mod alone cannot configure a server mission.
    `$profile:DayZRadio/radio-stations.json` — **later edit that profile copy**
    (the mission file is only an initial default). Server validates exactly
    eight fixed frequencies; only slots with both a name and URL play. The
-   example HTTPS URL must work from each client's PC before activation.
+   supplied presets include TruckersFM, NekoSune Community Radio, NCS-themed
+   channels and Capital FM UK. Verify the streams from client PCs, including
+   licensing, geo-availability and capacity, before enabling on a live server.
 4. Install the matching signed client mod on server and distribute its `.bikey`
    into the server `keys/` directory. Copy [`server/meta.cpp`](../server/meta.cpp)
    to the root of the server's `@LootTeamRadio/` directory, next to `mod.cpp`
@@ -36,6 +38,16 @@ client mod alone cannot configure a server mission.
    configuration and binaries before any release migration; rollback if
    script compilation fails. The example mod does **not** start eight Icecast
    processes: the seven empty slots remain intentionally silent.
+
+### Car radio controls (per player)
+
+Inside a vehicle with its engine running, `!radio car` selects preset 1,
+`!radio car 1` through `!radio car 8` select any of the eight configured
+stations, and `!radio car off` disables car radio playback. The car radio
+uses RPC 777004 and requires both the updated mission integration and client
+PBO. It does not broadcast spatially to other occupants; each player
+controls their own local MPC-HC playback. Leaving the car or stopping the
+engine pauses playback. The handheld radio continues to work independently.
 
 ### Admin chat commands
 
