@@ -161,6 +161,72 @@
       "frequency": 202.7,
       "name": "Gaming - Simulator Radio",
       "url": "https://simulatorradio.stream/stream"
+    },
+    {
+      "slotId": 28,
+      "frequency": 202.8,
+      "name": "NCS Dubstep (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-dubstep/stream"
+    },
+    {
+      "slotId": 29,
+      "frequency": 202.9,
+      "name": "NCS Trap (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-trap/stream"
+    },
+    {
+      "slotId": 30,
+      "frequency": 203,
+      "name": "NCS Phonk (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-phonk/stream"
+    },
+    {
+      "slotId": 31,
+      "frequency": 203.1,
+      "name": "NCS Pop (cliamp)",
+      "url": "https://radio.cliamp.stream/ncs-pop/stream"
+    },
+    {
+      "slotId": 32,
+      "frequency": 203.2,
+      "name": "Lofi Hip Hop (cliamp)",
+      "url": "https://radio.cliamp.stream/lofi/stream"
+    },
+    {
+      "slotId": 33,
+      "frequency": 203.3,
+      "name": "Synthwave (cliamp)",
+      "url": "https://radio.cliamp.stream/synthwave/stream"
+    },
+    {
+      "slotId": 34,
+      "frequency": 203.4,
+      "name": "EDM (cliamp)",
+      "url": "https://radio.cliamp.stream/edm/stream"
+    },
+    {
+      "slotId": 35,
+      "frequency": 203.5,
+      "name": "Chiptunes (cliamp)",
+      "url": "https://radio.cliamp.stream/chiptune/stream"
+    },
+    {
+      "slotId": 36,
+      "frequency": 203.6,
+      "name": "Amiga Tracker (cliamp)",
+      "url": "https://radio.cliamp.stream/amiga/stream"
+    },
+    {
+      "slotId": 37,
+      "frequency": 203.7,
+      "name": "SomaFM Cliqhop IDM",
+      "url": "https://ice5.somafm.com/cliqhop-128-mp3"
+    },
+    {
+      "slotId": 38,
+      "frequency": 203.8,
+      "name": "Retro Lofi Chiptune Radio",
+      "url": "https://a5.asurahosting.com:8150/radio.mp3"
     }
   ]
 }
