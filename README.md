@@ -39,7 +39,8 @@ of each server operator.
 
 When inside a car with its engine running, use `!radio car 1` to
 `!radio car 8` to select a station. `!radio car` selects the first
-preset and `!radio car off` turns the car radio off. No handheld
+preset and `!radio car off` turns the car radio off. `!radio car fungi` is an alias
+that stops LootTeamRadio playback before using Radio_Fungi cassettes. No handheld
 radio is required inside a car. Playback pauses when the engine stops
 or the player leaves the vehicle. Each occupant hears audio locally
 through their own MPC-HC player; it is not spatial multiplayer audio.
