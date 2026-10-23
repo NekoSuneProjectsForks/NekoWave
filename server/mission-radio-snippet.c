@@ -95,7 +95,7 @@
 		else if (command != "!radio car off" && command != "!radio car fungi")
 		{
 			value = command.Substring(11, command.Length() - 11);
-			if (value.Length() != 1 || value.ToInt() < 1 || value.ToInt() > 8 || value.ToInt().ToString() != value) return;
+			if (value.Length() < 1 || value.Length() > 2 || value.ToInt() < 1 || value.ToInt() > 48 || value.ToInt().ToString() != value) return;
 		}
 		array<Man> players = new array<Man>;
 		GetGame().GetPlayers(players);
@@ -202,12 +202,14 @@
 
 	bool RadioValidConfig(RTStations cfg)
 	{
-		if (!cfg || !cfg.stations || cfg.stations.Count() != 8) return false;
+		if (!cfg || !cfg.stations || (cfg.stations.Count() < 8 || cfg.stations.Count() > 48)) return false;
 		int freqs[] = {878, 895, 913, 919, 946, 966, 997, 1025};
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < cfg.stations.Count(); i++)
 		{
 			RTStation s = cfg.stations[i];
-			if (!s || s.slotId != i + 1 || Math.Round(s.frequency * 10.0) != freqs[i]) return false;
+			if (!s || s.slotId != i + 1) return false;
+			if (i < 8 && Math.Round(s.frequency * 10.0) != freqs[i]) return false;
+			if (i >= 8 && Math.Round(s.frequency * 10.0) != 2000 + i + 1) return false;
 			if (s.url != "" && s.url.IndexOf("http://") != 0 && s.url.IndexOf("https://") != 0) return false;
 			if (s.url.Contains("|") || s.url.Contains(";") || s.url.Contains(" ") || s.url.Contains(",") || s.name.Contains("|") || s.name.Contains(";")) return false;
 			if (s.url.Length() > 512 || s.name.Length() > 80 || s.name == "-" || s.url == "-") return false;
@@ -222,7 +224,7 @@
 	{
 		string data = "";
 		if (!m_RadioStations) return data;
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < m_RadioStations.stations.Count(); i++)
 		{
 			RTStation s = m_RadioStations.stations[i];
 			if (i > 0) data = data + ";";
@@ -237,9 +239,9 @@
 
 	void RadioSetStation(int slot, string url, string name)
 	{
-		if (!m_RadioStations || slot < 1 || slot > 8) return;
+		if (!m_RadioStations || slot < 1 || slot > m_RadioStations.stations.Count()) return;
 		RTStations updated = new RTStations();
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < m_RadioStations.stations.Count(); i++)
 		{
 			RTStation old = m_RadioStations.stations[i];
 			RTStation copy = new RTStation();
