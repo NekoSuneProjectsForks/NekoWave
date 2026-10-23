@@ -31,9 +31,19 @@ A forcibly killed game cannot send a shutdown request to MPC-HC.
 
 Server admins: see [server integration](docs/SERVER.md) and
 [build/signing](docs/BUILD.md).
-One sample slot points to your own station URL; the other seven slots have
-empty URLs. Streaming content rights are the responsibility of each server
-operator.
+All eight station presets are configured by default, and can be edited by server admins.
+Streaming rights, stream capacity, and region restrictions remain the responsibility
+of each server operator.
+
+### Car radio
+
+When inside a car with its engine running, use `!radio car 1` to
+`!radio car 8` to select a station. `!radio car` selects the first
+preset and `!radio car off` turns the car radio off. No handheld
+radio is required inside a car. Playback pauses when the engine stops
+or the player leaves the vehicle. Each occupant hears audio locally
+through their own MPC-HC player; it is not spatial multiplayer audio.
+Both the updated mission snippet and client mod are required.
 
 **Optional test server:** `loot.team:2302` — availability is **not guaranteed**;
 only advertise it after checking access from outside the owner's network.
