@@ -4,6 +4,7 @@
 modded class MissionGameplay
 {
 	private int m_LootRadioTicks;
+	private ref NekoWaveMenu m_NekoWaveMenu;
 	private int m_AnnouncedFrequency = -1;
 	private bool m_WasWorking = false;
 	private string m_AnnouncedName = "";
@@ -21,6 +22,33 @@ modded class MissionGameplay
 	override void OnUpdate(float timeslice)
 	{
 		super.OnUpdate(timeslice);
+
+		// Poll before the radio's slower playback tick so the hotkey is responsive.
+		UAInput menuInput = GetUApi().GetInputByName("UANekoWaveToggle");
+		PlayerBase menuPlayer = PlayerBase.Cast(GetGame().GetPlayer());
+		bool inCar = false;
+		bool holdingRadio = false;
+		if (menuPlayer && menuPlayer.IsAlive())
+		{
+			inCar = menuPlayer.GetCommand_Vehicle() != null;
+			EntityAI held = menuPlayer.GetHumanInventory().GetEntityInHands();
+			holdingRadio = ItemTransmitter.Cast(held) != null;
+		}
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen() && (!inCar && !holdingRadio))
+		{
+			m_NekoWaveMenu.Close();
+			m_NekoWaveMenu = null;
+		}
+		if (menuInput && menuInput.LocalPress())
+		{
+			if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen())
+			{
+				m_NekoWaveMenu.Close();
+				m_NekoWaveMenu = null;
+			}
+			else if ((inCar || holdingRadio) && !GetGame().GetUIManager().GetMenu())
+				m_NekoWaveMenu = new NekoWaveMenu(inCar);
+		}
 
 		m_LootRadioTicks++;
 		if (m_LootRadioTicks < 30)
@@ -199,6 +227,7 @@ modded class MissionGameplay
 
 	void ~MissionGameplay()
 	{
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen()) m_NekoWaveMenu.Close();
 		LootRadioState.StopSession();
 	}
 }
