@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modded_inputs>
+  <inputs>
+    <actions>
+      <input name="UANekoWaveToggle" loc="NekoWave radio menu" />
+    </actions>
+    <sorting name="nekowave">
+      <input name="UANekoWaveToggle" />
+    </sorting>
+  </inputs>
+  <preset>
+  </preset>
+</modded_inputs>
