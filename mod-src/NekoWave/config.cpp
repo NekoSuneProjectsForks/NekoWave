@@ -3,6 +3,7 @@ class CfgMods
 	class NekoWave
 	{
 		name = "NekoWave Radio";
+		inputs = "NekoWave/inputs.xml";
 		type = "mod";
 		dependencies[] = {"Game", "World", "Mission"};
 		class defs
