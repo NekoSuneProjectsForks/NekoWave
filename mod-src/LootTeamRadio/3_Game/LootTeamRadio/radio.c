@@ -56,6 +56,30 @@ class LootRadioState
 	// MPC-HC on the same PC; Linux test host forwards this port to the Windows VM.
 	static const string MPC_BASE = "http://127.0.0.1:13579/";
 	static const int MUSIC_RPC_ID = 777001;
+	static int m_CarStationSlot = -1;
+	static void SetCarStation(string value)
+	{
+		if (value == "off")
+		{
+			m_CarStationSlot = -1;
+			SetVolume0();
+			NotificationSystem.AddNotificationExtended(4.0, "Car radio", "Off");
+			return;
+		}
+		if (value.Length() != 1 || value.ToInt() < 1 || value.ToInt() > 8 || value.ToInt().ToString() != value) return;
+		m_CarStationSlot = value.ToInt();
+		NotificationSystem.AddNotificationExtended(4.0, "Car radio", "Preset " + value);
+	}
+	static int GetCarFrequencyKey()
+	{
+		if (m_CarStationSlot < 1 || !s_SlotIds) return -1;
+		for (int i = 0; i < s_SlotIds.Count(); i++)
+		{
+			int key = s_SlotIds.GetKey(i);
+			if (s_SlotIds.Get(key) == m_CarStationSlot) return key;
+		}
+		return -1;
+	}
 	static const int DEFAULT_VOLUME = 60;
 	static int m_UserVolume = 60;
 	static bool m_VolumeLoaded = false;
