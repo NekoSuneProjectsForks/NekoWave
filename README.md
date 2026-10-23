@@ -1,108 +1,46 @@
-# NekoWave Radio — Live Internet & Car Radio for DayZ
+# NekoWave Radio
 
-> **Stream real internet radio in DayZ vehicles or on a handheld radio, with a Radio_Fungi cassette coexistence option.**
+Live internet radio for DayZ handheld radios and vehicles, with experimental Radio_Fungi cassette coexistence.
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I0U227MY23)
+**Based on:** [LootTeamRadio by offmonreal](https://github.com/offmonreal/LootTeamRadio). NekoWave Radio is an independent fork that retains credit to the original project and its contributors. See [LICENSE](LICENSE) for licensing terms.
 
-**Project:** NekoWave Radio (working name for this enhanced fork).
+## Features
 
-**Fork attribution:** This project is an enhanced fork of **LootTeamRadio** by
-**[offmonreal](https://github.com/offmonreal/LootTeamRadio)**. The original
-project, its contributors, and their work remain credited. This fork adds
-multi-station presets, in-car streaming controls, and experimental
-Radio_Fungi cassette coexistence. It is not an official Radio_Fungi addon.
+- Eight configurable internet radio stations, including TruckersFM, NekoSune Community Radio, NCS-themed streams and Capital FM UK.
+- In-car radio presets using chat commands, without needing a handheld radio item.
+- Existing Personal Radio support.
+- Radio_Fungi coexistence: automatically pauses the livestream when a cassette is detected in a vehicle's `Cassette` attachment slot.
+- Per-player volume settings. Radio audio plays locally through MPC-HC, **not** as shared in-game vehicle audio.
 
-> **Technical compatibility:** Internal script class names, PBO prefix, profile
-> directory, and RPC IDs currently retain the original `LootTeamRadio` naming.
-> This avoids breaking existing deployments during the display-name change.
-> The GitHub repository URL is unchanged.
+## Setup
 
-## English
+1. Install [MPC-HC](https://github.com/clsid2/mpc-hc/releases) on Windows and keep it running.
+2. In **View > Options > Player > Web Interface**, enable **Listen on port** and enter `13579`.
+3. Install a matching signed NekoWave Radio client mod and join a server that has integrated its mission-side station configuration.
+4. Use a battery-powered **Personal Radio** in your hands, or enter a vehicle with its engine running and select a live station.
 
-Hold an in-game **Personal Radio** with a battery, turn it on, and tune to a
-station. The server sends eight fixed FM presets; the mod
-writes a playlist into your DayZ profile and controls MPC-HC on *your own PC*.
-Audio is personal — other players nearby do not hear the external player.
-Empty channels display “Channel available.”
+## Commands
 
-### Player setup (Windows)
+| Command | Function |
+| --- | --- |
+| `!radio car 1` to `!radio car 8` | Choose a vehicle livestream station |
+| `!radio car` | Select vehicle preset 1 |
+| `!radio car off` | Turn off the vehicle livestream |
+| `!radio car fungi` | Turn off the livestream before using Radio_Fungi |
+| `!radio 50` | Set personal radio volume to 50% (0-100) |
+| `!radio help` | Display player help |
 
-1. Install and run [MPC-HC (clsid2)](https://github.com/clsid2/mpc-hc/releases).
-2. In **View → Options → Player → Web Interface**, check **Listen on port**
-   and set **13579**. Keep MPC-HC open while playing DayZ.
-3. Subscribe to the mod **once the Workshop release is available** and enable
-   it when connecting to a server that uses the matching version. Hold and
-   switch on a battery-powered Personal Radio, then tune a configured frequency.
+Server admins can edit the eight presets in `$profile:DayZRadio/radio-stations.json`. See [server setup](docs/SERVER.md) and [build instructions](docs/BUILD.md).
 
-Chat: `!radio 50` sets personal player volume (0–100); `!radio help` shows
-in-game help. The first time you switch on a radio, a short hint appears.
-If MPC-HC is unavailable, an in-game hint displays the setup path. Radio
-playback stops when you put the radio away, switch it off, die or exit normally.
-A forcibly killed game cannot send a shutdown request to MPC-HC.
+## Radio_Fungi coexistence
 
-Server admins: see [server integration](docs/SERVER.md) and
-[build/signing](docs/BUILD.md).
-Eight station presets are supplied (Loot.Team, TruckersFM, NekoSune Community Radio, four third-party NCS-themed streams, and Capital FM UK); server admins can edit them. Streams have not been guaranteed available in every region.
-Streaming rights, stream capacity, and region restrictions remain the responsibility
-of each server operator.
+NekoWave Radio pauses its external livestream when it detects an item attached to the vehicle's `Cassette` slot. Removing the cassette lets the chosen livestream resume when the engine is running. **This checks whether a cassette is inserted, not whether the cassette is currently playing.** It does not control Radio_Fungi or alter its files.
 
-### Car radio
+Compatibility with Radio_Fungi and different vehicle mods is **not yet verified in DayZ**. Test both mods together on a staging server before deploying. Stream availability, regional access, and content rights are the server operator's responsibility.
 
-When inside a car with its engine running, use `!radio car 1` to
-`!radio car 8` to select a station. `!radio car` selects the first
-preset and `!radio car off` turns the car radio off. `!radio car fungi` is an alias
-that stops NekoWave Radio playback before using Radio_Fungi cassettes. No handheld
-radio is required inside a car. Playback pauses when the engine stops
-or the player leaves the vehicle. Each occupant hears audio locally
-through their own MPC-HC player; it is not spatial multiplayer audio.
-Both the updated mission snippet and client mod are required.
+## Development and credits
 
-**Optional test server:** `loot.team:2302` — availability is **not guaranteed**;
-only advertise it after checking access from outside the owner's network.
-
-## Русский
-
-Радио-мод для DayZ: удерживайте рацию **Personal Radio** с батарейкой,
-включите её и настройтесь на волну. Сервер раздаёт восемь фиксированных частот,
-включая пустые. Звук воспроизводится через MPC-HC **только на вашем ПК**, а не
-в мире DayZ: другие игроки рядом его не слышат.
-
-1. Установите и запустите [MPC-HC (clsid2)](https://github.com/clsid2/mpc-hc/releases).
-2. **View → Options → Player → Web Interface**: поставьте галочку
-   **Listen on port** и укажите **13579**.
-3. После выпуска мода в Workshop подпишитесь на него, включите при входе
-   на сервер с совместимой версией и возьмите включённую рацию в руки.
-
-`!radio 50` — личная громкость 0–100; `!radio help` — справка в игре.
-Первое включение показывает краткую подсказку; при отсутствии связи с плеером
-мод подскажет, как его включить. Пустые частоты не воспроизводят звук.
-
-Администратору: [встраивание серверной части](docs/SERVER.md)
-и [сборка и подпись](docs/BUILD.md).
-Тестовый сервер `loot.team:2302` может быть недоступен.
-
-## Links and original project credit
-
-- **Original source:** [offmonreal/LootTeamRadio](https://github.com/offmonreal/LootTeamRadio)
+- **Original mod:** [offmonreal/LootTeamRadio](https://github.com/offmonreal/LootTeamRadio)
 - **Enhanced fork:** [NekoSuneProjectsForks/LootTeamRadio](https://github.com/NekoSuneProjectsForks/LootTeamRadio)
-- [MPC-HC downloads](https://github.com/clsid2/mpc-hc/releases)
-- [Original project's Ko-fi](https://ko-fi.com/I0U227MY23)
-- Workshop: **not published yet**; add item URL only after release.
-
-Original LootTeamRadio code is MIT licensed; retain its copyright and licence notices. Additional fork changes are documented in Git history. DayZ, MPC-HC, and Radio_Fungi belong to their respective owners.
-
-
-#### Radio_Fungi cassette coexistence
-
-In vehicles with a `Cassette` attachment slot, NekoWave Radio now checks
-whether a cassette is inserted. If so, the external livestream automatically
-pauses and Radio_Fungi can use its original controls. Removing the cassette
-allows the selected livestream preset to resume if the car engine is running.
-`!radio car fungi` still turns off the stream manually.
-
-This is **attachment-based detection**, not genuine cassette play/pause
-detection: a cassette left inserted but stopped will keep livestreams paused.
-It does not alter or stop Radio_Fungi's sounds, and it is not a guarantee of
-compatibility with all versions, boats, or third-party vehicle packs. Test the
-vehicle slot name, both mods and playback on a staging DayZ server. The
-livestream remains local MPC-HC audio, not shared vehicle sound.
+- Internally, the `LootTeamRadio` script and PBO identifiers are retained for compatibility.
+- DayZ, MPC-HC, and Radio_Fungi belong to their respective owners.
