@@ -36,9 +36,18 @@ Server admins can edit the station catalogue in `$profile:DayZRadio/radio-statio
 
 The server accepts 8–48 ordered station entries in `$profile:DayZRadio/radio-stations.json`. The first eight retain their original physical handheld frequencies. Extra stations are **vehicle-only** and must use sequential slot IDs and unique virtual frequency keys: slot 9 uses `frequency: 200.9`, slot 10 uses `201.0`, and slot 48 uses `204.8` (formula: `(2000 + slotId) / 10`). These are internal identifiers, not actual DayZ radio frequencies.
 
-The included sample now has 12 stations; the four new samples are candidate SomaFM and Radio Paradise endpoints whose availability and permitted usage must be checked. Add/edit entries on the server and run admin `!radio reload` to send the new list to connected players. Clients must use this updated mod version.
+The included sample now has **27 stations**, spanning UK radio, Canadian stations, US independent stations, gaming radio, SomaFM, Radio Paradise, TruckersFM, and NekoSune Community Radio. Live endpoints can change or have geographic and licensing restrictions; test them before running a public server. Add/edit entries on the server and run admin `!radio reload` to send the new list to connected players. Clients must use this updated mod version.
 
 **GUI status:** An in-game search/category/favourites interface is still planned, not yet implemented. Until then, select extra stations with `!radio car 9`, `!radio car 10` etc.
+
+### Station catalogue regions
+
+- **UK:** Capital, Heart 80s, BBC World Service, LBC.
+- **Canada:** CIUT Toronto, Rock 101, CFOX, CJAY 92, The Bear, RdMix.
+- **USA:** KEXP, WFMU, SomaFM.
+- **Gaming/community:** TruckersFM, Simulator Radio, NekoSune Community Radio.
+
+These are example stream presets, not endorsements, and they have not been tested with MPC-HC in DayZ. The bundled catalogue is a server default; an existing `$profile:DayZRadio/radio-stations.json` takes priority. Add the new entries to that file to upgrade an existing server, then run `!radio reload`.
 
 ## Radio_Fungi coexistence
 
