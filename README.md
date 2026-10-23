@@ -19,6 +19,15 @@ Live internet radio for DayZ handheld radios and vehicles, with experimental Rad
 3. Install a matching signed NekoWave Radio client mod and join a server that has integrated its mission-side station configuration.
 4. Use a battery-powered **Personal Radio** in your hands, or enter a vehicle with its engine running and select a live station.
 
+## In-game station menu (experimental)
+
+A new toggleable radio panel is included. In DayZ **Settings > Controls**, assign a key to the **NekoWave radio menu** action (the binding is intentionally empty by default to avoid conflicts with existing controls).
+
+- **In a vehicle:** press your assigned hotkey to open/close the station picker; browse eight stations per page, select any of the 48 presets or switch the stream off. Radio_Fungi cassette attachments still have priority.
+- **With a Personal Radio in your hands:** the same hotkey opens the station catalogue, but the eight handheld FM frequencies must still be tuned on the physical radio. Vehicle-only slots 9–48 cannot be tuned on an unmodified handheld.
+- **Elsewhere:** the hotkey does nothing. The panel closes automatically if you leave the vehicle or stop holding the Personal Radio.
+- The panel uses MPC-HC as before; it is not in-game 3D audio. The new UI and keybinding need compilation and in-game testing before release.
+
 ## Commands
 
 | Command | Function |
@@ -38,7 +47,7 @@ The server accepts 8–48 ordered station entries in `$profile:DayZRadio/radio-s
 
 The included sample now has **48 stations**, spanning UK radio, Canadian stations, US independent stations, gaming radio, SomaFM, Radio Paradise, TruckersFM, and NekoSune Community Radio. Live endpoints can change or have geographic and licensing restrictions; test them before running a public server. Add/edit entries on the server and run admin `!radio reload` to send the new list to connected players. Clients must use this updated mod version.
 
-**GUI status:** An in-game search/category/favourites interface is still planned, not yet implemented. Until then, select extra stations with `!radio car 9`, `!radio car 10` etc.
+**GUI status:** A basic paginated in-game station picker with a configurable toggle hotkey is implemented but untested. Search, categories and favourites are still planned. Until then, select extra stations with `!radio car 9`, `!radio car 10` etc.
 
 ### Station catalogue regions
 
