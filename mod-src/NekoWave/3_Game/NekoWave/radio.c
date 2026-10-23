@@ -66,7 +66,7 @@ class LootRadioState
 			NotificationSystem.AddNotificationExtended(4.0, "Car radio", "Off");
 			return;
 		}
-		if (value.Length() != 1 || value.ToInt() < 1 || value.ToInt() > 8 || value.ToInt().ToString() != value) return;
+		if (value.Length() < 1 || value.Length() > 2 || value.ToInt() < 1 || value.ToInt() > 48 || value.ToInt().ToString() != value) return;
 		m_CarStationSlot = value.ToInt();
 		NotificationSystem.AddNotificationExtended(4.0, "Car radio", "Preset " + value);
 	}
@@ -358,7 +358,7 @@ class LootRadioState
 		if (data == m_LastSnapshot) return;
 		array<string> incoming = new array<string>();
 		data.Split(";", incoming);
-		if (incoming.Count() != 8)
+		if (incoming.Count() < 8 || incoming.Count() > 48)
 		{
 			Print("[LootRadio] invalid station snapshot, keeping current stations");
 			return;
@@ -383,7 +383,7 @@ class LootRadioState
 			{
 				int slotId = parts[0].ToInt();
 				int freqKey = parts[1].ToInt();
-				if (slotId < 1 || slotId > 8 || freqKey <= 0 || s_SlotIds.Contains(freqKey)) continue;
+				if (slotId < 1 || slotId > incoming.Count() || freqKey <= 0 || s_SlotIds.Contains(freqKey)) continue;
 				s_AllFrequencies.Insert(freqKey);
 				s_SlotIds.Insert(freqKey, slotId);
 				if (parts[3] != "-")
@@ -407,7 +407,7 @@ class LootRadioState
 			keys.Remove(best);
 		}
 
-		if (s_AllFrequencies.Count() != 8)
+		if (s_AllFrequencies.Count() != incoming.Count())
 		{
 			Print("[LootRadio] incomplete station snapshot; ignoring");
 			m_LastSnapshot = data;
@@ -473,7 +473,7 @@ class LootRadioState
 		foreach (int fkey : s_FreqOrder)
 		{
 			float freq = fkey * 0.1;
-			FPrintln(f, "#EXTINF:-1," + s_Names.Get(fkey) + " (" + freq.ToString() + " MHz)");
+			FPrintln(f, "#EXTINF:-1," + s_Names.Get(fkey));
 			FPrintln(f, s_Stations.Get(fkey));
 		}
 		CloseFile(f);
