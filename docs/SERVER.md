@@ -90,3 +90,19 @@ Players use `!radio 50` / `!radio volume 50` and `!radio help`.
 **Caveat:** standalone mission snippets cannot be compiled directly; test the
 merged mission in DayZ on a non-production server before changing the live
 mission. Obtain content rights and check stream capacity before advertising.
+
+
+#### Radio_Fungi cassette coexistence
+
+In vehicles with a `Cassette` attachment slot, LootTeamRadio now checks
+whether a cassette is inserted. If so, the external livestream automatically
+pauses and Radio_Fungi can use its original controls. Removing the cassette
+allows the selected livestream preset to resume if the car engine is running.
+`!radio car fungi` still turns off the stream manually.
+
+This is **attachment-based detection**, not genuine cassette play/pause
+detection: a cassette left inserted but stopped will keep livestreams paused.
+It does not alter or stop Radio_Fungi's sounds, and it is not a guarantee of
+compatibility with all versions, boats, or third-party vehicle packs. Test the
+vehicle slot name, both mods and playback on a staging DayZ server. The
+livestream remains local MPC-HC audio, not shared vehicle sound.
