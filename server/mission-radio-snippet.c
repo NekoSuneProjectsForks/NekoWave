@@ -92,7 +92,7 @@
 	{
 		string value = "off";
 		if (command == "!radio car") value = "1";
-		else if (command != "!radio car off")
+		else if (command != "!radio car off" && command != "!radio car fungi")
 		{
 			value = command.Substring(11, command.Length() - 11);
 			if (value.Length() != 1 || value.ToInt() < 1 || value.ToInt() > 8 || value.ToInt().ToString() != value) return;
