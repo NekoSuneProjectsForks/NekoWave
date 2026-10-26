@@ -55,8 +55,14 @@ If **none** appears after joining a game, the new mission script may be missing 
 
 ## Release versioning
 
-Keep `server/mod.cpp` and `mod-src/NekoWave/config.cpp` at the same `version` value. Current source version: **0.2.1**. Copy `server/mod.cpp` as `Build/@NekoWave/mod.cpp` and `server/meta.cpp` as `Build/@NekoWave/meta.cpp` for each release. This updates descriptive metadata; it does not publish the build or repair its GUI automatically.
+Keep `server/mod.cpp` and `mod-src/NekoWave/config.cpp` at the same `version` value. Current source version: **0.2.2**. Copy `server/mod.cpp` as `Build/@NekoWave/mod.cpp` and `server/meta.cpp` as `Build/@NekoWave/meta.cpp` for each release. This updates descriptive metadata; it does not publish the build or repair its GUI automatically.
 
-## v0.2.1 UI smoke test
+## v0.2.2 UI smoke test
 
 Verify all 48 radio station rows appear, paging works, the buttons can be clicked, the F7 key toggles the panel, the panel closes when you leave the car or put the handheld down, and Alt-Tab followed by F7/Escape leaves the game responsive. The bundled station list is only a fallback; integrate the server mission code for authoritative, custom station lists. If stations are not playable, check MPC-HC web interface port 13579 separately. This source has not been compiled/tested within DayZ by the maintainer assistant.
+
+## GitHub catalogue test (v0.2.2)
+
+The client asynchronously downloads `server/radio-stations.json` from the public raw GitHub URL on the feature branch at mission start. Make sure the repository/file is publicly readable without GitHub login. Mod code must be rebuilt and re-signed *once* to enable this feature, but subsequent edits to the GitHub JSON do not require rebuilding the client PBO. DayZ's original server RPC supersedes the GitHub fallback when it arrives. The local bundled list is retained for offline fallback.
+
+Verify on the Windows client in `%LOCALAPPDATA%\\DayZ/script_*.log` that `[NekoWave] GitHub catalogue loaded: 48 stations.` appears, or inspect an explicit REST/JSON error. Reconnect to refresh after changing the GitHub file. This test implementation is limited to 48 stations; a future geo-radio/search API will need a new catalogue protocol and UI.
