@@ -52,3 +52,7 @@ The client script log at `%LOCALAPPDATA%\\DayZ` now prints one of:
 - `[NekoWave] ERROR: menu widget creation failed` — inspect the layout path in the *published client* PBO.
 
 If **none** appears after joining a game, the new mission script may be missing or the player is running a previous Workshop build. The current menu is experimental and still needs an actual DayZ client compile and play test.
+
+## Release versioning
+
+Keep `server/mod.cpp` and `mod-src/NekoWave/config.cpp` at the same `version` value. Current source version: **0.2.0**. Copy `server/mod.cpp` as `Build/@NekoWave/mod.cpp` and `server/meta.cpp` as `Build/@NekoWave/meta.cpp` for each release. This updates descriptive metadata; it does not publish the build or repair its GUI automatically.
