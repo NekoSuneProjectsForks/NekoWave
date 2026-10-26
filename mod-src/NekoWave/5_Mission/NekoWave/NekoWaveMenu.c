@@ -10,24 +10,36 @@ class NekoWaveMenu : ScriptedWidgetEventHandler
 	protected TextWidget m_Status;
 	protected int m_Page;
 	protected bool m_InVehicle;
+	protected bool m_CursorOwned;
 
 	void NekoWaveMenu(bool inVehicle)
 	{
 		m_InVehicle = inVehicle;
 		m_Page = 0;
+		NekoWaveBundledStations.LoadIfMissing();
 		m_Root = GetGame().GetWorkspace().CreateWidgets("NekoWave/gui/layouts/nekowave.layout");
 		if (!m_Root) return;
 		m_Root.SetHandler(this);
 		m_Status = TextWidget.Cast(m_Root.FindAnyWidget("NWStatus"));
 		m_Rows = new array<ButtonWidget>();
 		for (int i = 1; i <= 8; i++)
-			m_Rows.Insert(ButtonWidget.Cast(m_Root.FindAnyWidget("NW" + i.ToString())));
+			{
+			ButtonWidget row = ButtonWidget.Cast(m_Root.FindAnyWidget("NW" + i.ToString()));
+			if (row) row.SetHandler(this);
+			m_Rows.Insert(row);
+		}
 		m_Prev = ButtonWidget.Cast(m_Root.FindAnyWidget("NWPrev"));
 		m_Next = ButtonWidget.Cast(m_Root.FindAnyWidget("NWNext"));
 		m_Off = ButtonWidget.Cast(m_Root.FindAnyWidget("NWOff"));
 		m_Close = ButtonWidget.Cast(m_Root.FindAnyWidget("NWClose"));
+		if (m_Prev) m_Prev.SetHandler(this);
+		if (m_Next) m_Next.SetHandler(this);
+		if (m_Off) m_Off.SetHandler(this);
+		if (m_Close) m_Close.SetHandler(this);
 		GetGame().GetUIManager().ShowCursor(true);
-		GetGame().GetInput().ChangeGameFocus(1);
+		// Do not change the global game-focus reference counter: it can trap
+		// input after Alt-Tab or after another mod opens/closes a menu.
+		m_CursorOwned = true;
 		Refresh();
 	}
 
@@ -96,8 +108,11 @@ class NekoWaveMenu : ScriptedWidgetEventHandler
 	void Close()
 	{
 		if (m_Root) { m_Root.Unlink(); m_Root = null; }
-		GetGame().GetInput().ChangeGameFocus(-1);
-		GetGame().GetUIManager().ShowCursor(false);
+		if (m_CursorOwned)
+		{
+			m_CursorOwned = false;
+			GetGame().GetUIManager().ShowCursor(false);
+		}
 	}
 	bool IsOpen() { return m_Root != null; }
 }
