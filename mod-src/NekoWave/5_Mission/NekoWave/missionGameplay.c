@@ -1,9 +1,11 @@
-// Loot.Team Radio — client mission hooks (Phase 3)
+// NekoWave Radio — client mission hooks (Phase 3)
 // OnUpdate: опрос Personal Radio в руках; RPC 777001 обрабатывается в DayZGame.
 
 modded class MissionGameplay
 {
 	private int m_LootRadioTicks;
+	private ref NekoWaveMenu m_NekoWaveMenu;
+	private bool m_NekoWaveInputChecked;
 	private int m_AnnouncedFrequency = -1;
 	private bool m_WasWorking = false;
 	private string m_AnnouncedName = "";
@@ -16,12 +18,63 @@ modded class MissionGameplay
 	{
 		m_LootRadioTicks = 0;
 		LootRadioState.BeginSession();
+		NekoWaveRemoteStations.Fetch(true);
 	}
 
 	override void OnUpdate(float timeslice)
 	{
 		super.OnUpdate(timeslice);
 
+		// Poll before the radio's slower playback tick so the hotkey is responsive.
+		UAInput menuInput = GetUApi().GetInputByName("UANekoWaveToggle");
+		if (!m_NekoWaveInputChecked)
+		{
+			m_NekoWaveInputChecked = true;
+			if (!menuInput) Print("[NekoWave] ERROR: UANekoWaveToggle not registered. Check inputs.xml in client PBO and CfgMods.inputs.");
+			else Print("[NekoWave] UANekoWaveToggle registered; default F7 or player custom binding.");
+		}
+		PlayerBase menuPlayer = PlayerBase.Cast(GetGame().GetPlayer());
+		bool inCar = false;
+		bool holdingRadio = false;
+		if (menuPlayer && menuPlayer.IsAlive())
+		{
+			inCar = menuPlayer.GetCommand_Vehicle() != null;
+			EntityAI held = menuPlayer.GetHumanInventory().GetEntityInHands();
+			holdingRadio = ItemTransmitter.Cast(held) != null;
+		}
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen() && (!inCar && !holdingRadio))
+		{
+			m_NekoWaveMenu.Close();
+			m_NekoWaveMenu = null;
+		}
+		// Never leave the radio cursor active under a native pause/inventory menu.
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen() && GetGame().GetUIManager().GetMenu())
+		{
+			m_NekoWaveMenu.Close();
+			m_NekoWaveMenu = null;
+		}
+		// Escape/pause is an emergency exit even if the Close button loses focus.
+		UAInput escapeInput = GetUApi().GetInputByName("UAMenu");
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen() && escapeInput && escapeInput.LocalPress())
+		{
+			m_NekoWaveMenu.Close();
+			m_NekoWaveMenu = null;
+		}
+		if (menuInput && menuInput.LocalPress())
+		{
+			if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen())
+			{
+				m_NekoWaveMenu.Close();
+				m_NekoWaveMenu = null;
+			}
+			else if ((inCar || holdingRadio) && !GetGame().GetUIManager().GetMenu())
+				{
+				m_NekoWaveMenu = new NekoWaveMenu(inCar);
+				if (!m_NekoWaveMenu.IsOpen()) Print("[NekoWave] ERROR: menu widget creation failed. Check NekoWave/gui/layouts/nekowave.layout inside the client PBO.");
+			}
+		}
+
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen()) m_NekoWaveMenu.RefreshIfChanged();
 		m_LootRadioTicks++;
 		if (m_LootRadioTicks < 30)
 			return;
@@ -36,6 +89,50 @@ modded class MissionGameplay
 			return;
 		}
 
+		// Car radio is private to each occupant and uses the same MPC-HC playlist.
+		HumanCommandVehicle vehicleCommand = player.GetCommand_Vehicle();
+		CarScript car;
+		if (vehicleCommand) car = CarScript.Cast(vehicleCommand.GetTransport());
+		if (car)
+		{
+			// Radio_Fungi car addon uses the "Cassette" vehicle attachment.
+			// This is a conservative coexistence rule, not a playback-state API.
+			// Prefer the in-game cassette whenever one is inserted, and never
+			// change the other mod's actions, audio state, or attachment.
+			EntityAI fungiCassette = car.FindAttachmentBySlotName("Cassette");
+			if (fungiCassette)
+			{
+				LootRadioState.SetVolume0();
+				m_WasWorking = false;
+				return;
+			}
+			int carFrequencyKey = LootRadioState.GetCarFrequencyKey();
+			if (carFrequencyKey > 0 && car.EngineIsOn())
+			{
+				int carNow = GetGame().GetTime();
+				if (!m_ConnectionChecked || carNow - m_LastConnectionCheck >= 60000)
+				{
+					m_ConnectionChecked = true;
+					m_LastConnectionCheck = carNow;
+					LootRadioState.CheckPlayerConnection();
+				}
+				LootRadioState.PlayStation(carFrequencyKey);
+				if (!m_WasWorking || carFrequencyKey != m_AnnouncedFrequency)
+				{
+					string stationName = "Channel available";
+					if (LootRadioState.s_Names && LootRadioState.s_Names.Contains(carFrequencyKey)) stationName = LootRadioState.s_Names.Get(carFrequencyKey);
+					NotificationSystem.AddNotificationExtended(5.0, "Car radio: preset " + LootRadioState.m_CarStationSlot.ToString(), stationName);
+					m_AnnouncedFrequency = carFrequencyKey;
+				}
+				m_WasWorking = true;
+			}
+			else
+			{
+				LootRadioState.SetVolume0();
+				m_WasWorking = false;
+			}
+			return;
+		}
 		EntityAI hands = player.GetHumanInventory().GetEntityInHands();
 		ItemTransmitter tx = ItemTransmitter.Cast(hands);
 
@@ -155,6 +252,7 @@ modded class MissionGameplay
 
 	void ~MissionGameplay()
 	{
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen()) m_NekoWaveMenu.Close();
 		LootRadioState.StopSession();
 	}
 }
