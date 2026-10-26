@@ -18,6 +18,7 @@ modded class MissionGameplay
 	{
 		m_LootRadioTicks = 0;
 		LootRadioState.BeginSession();
+		NekoWaveRemoteStations.Fetch(true);
 	}
 
 	override void OnUpdate(float timeslice)
@@ -73,6 +74,7 @@ modded class MissionGameplay
 			}
 		}
 
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen()) m_NekoWaveMenu.RefreshIfChanged();
 		m_LootRadioTicks++;
 		if (m_LootRadioTicks < 30)
 			return;
