@@ -11,12 +11,14 @@ class NekoWaveMenu : ScriptedWidgetEventHandler
 	protected int m_Page;
 	protected bool m_InVehicle;
 	protected bool m_CursorOwned;
+	protected int m_LastCatalogueRevision = -1;
 
 	void NekoWaveMenu(bool inVehicle)
 	{
 		m_InVehicle = inVehicle;
 		m_Page = 0;
 		NekoWaveBundledStations.LoadIfMissing();
+		NekoWaveRemoteStations.Fetch();
 		m_Root = GetGame().GetWorkspace().CreateWidgets("NekoWave/gui/layouts/nekowave.layout");
 		if (!m_Root) return;
 		m_Root.SetHandler(this);
@@ -41,6 +43,15 @@ class NekoWaveMenu : ScriptedWidgetEventHandler
 		// input after Alt-Tab or after another mod opens/closes a menu.
 		m_CursorOwned = true;
 		Refresh();
+	}
+
+	void RefreshIfChanged()
+	{
+		if (m_LastCatalogueRevision != NekoWaveRemoteStations.s_Revision)
+		{
+			m_LastCatalogueRevision = NekoWaveRemoteStations.s_Revision;
+			Refresh();
+		}
 	}
 
 	void Refresh()
