@@ -1,6 +1,6 @@
 # NekoWave Radio
 
-**Current source version: 0.2.0 (GUI/keybind beta).** The version in `server/mod.cpp` must be copied into the published mod folder when rebuilding; publishing to Steam Workshop remains a separate action.
+**Current source version: 0.2.1 (GUI/keybind beta).** The version in `server/mod.cpp` must be copied into the published mod folder when rebuilding; publishing to Steam Workshop remains a separate action.
 
 Live internet radio for DayZ handheld radios and vehicles, with experimental Radio_Fungi cassette coexistence.
 
@@ -22,6 +22,9 @@ Live internet radio for DayZ handheld radios and vehicles, with experimental Rad
 4. Use a battery-powered **Personal Radio** in your hands, or enter a vehicle with its engine running and select a live station.
 
 ## In-game station menu (experimental)
+
+**v0.2.1 UI fixes:** Bundled 48-station catalogue is shown even if the server has not supplied station metadata yet. A later server snapshot still replaces the bundled catalogue. Station buttons now receive click events directly; menu no longer manipulates the global game-focus counter, and Escape/native game menus provide an emergency close path. If the server mission integration is not installed, your player may see only the bundled preset names instead of the server's custom list. Changes require rebuilding, signing and republishing the client PBO.
+
 
 A new toggleable radio panel is included. In DayZ **Settings > Controls**, find **NekoWave Radio → Toggle Radio Menu**. The default is **F7**, and you can remap or clear it just like other DayZ controls. Some other mods may also use F7, so change it if there is a conflict.
 
