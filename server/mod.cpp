@@ -7,4 +7,4 @@ tooltip = "NekoWave Radio";
 overview = "Live internet radio for DayZ handheld radios and vehicles. Experimental Radio_Fungi cassette coexistence. Fork of LootTeamRadio by offmonreal.";
 action = "https://github.com/NekoSuneProjectsForks/NekoWave";
 author = "NekoSuneProjectsForks (fork of offmonreal/LootTeamRadio)";
-version = "0.1.0";
+version = "0.2.0";
