@@ -1,6 +1,6 @@
 # NekoWave Radio
 
-**Current source version: 0.2.1 (GUI/keybind beta).** The version in `server/mod.cpp` must be copied into the published mod folder when rebuilding; publishing to Steam Workshop remains a separate action.
+**Current source version: 0.2.2 (GUI/keybind beta).** The version in `server/mod.cpp` must be copied into the published mod folder when rebuilding; publishing to Steam Workshop remains a separate action.
 
 Live internet radio for DayZ handheld radios and vehicles, with experimental Radio_Fungi cassette coexistence.
 
@@ -21,9 +21,17 @@ Live internet radio for DayZ handheld radios and vehicles, with experimental Rad
 3. Install a matching signed NekoWave Radio client mod and join a server that has integrated its mission-side station configuration.
 4. Use a battery-powered **Personal Radio** in your hands, or enter a vehicle with its engine running and select a live station.
 
+## Remote GitHub station catalogue (v0.2.2 test mode)
+
+At mission startup the Windows client requests the JSON catalogue asynchronously from:
+
+`https://raw.githubusercontent.com/NekoSuneProjectsForks/NekoWave/feature/vehicle-radio-multi-stations/server/radio-stations.json`
+
+This **does not require rebuilding the PBO when the JSON content changes** after v0.2.2 is published: edit and commit `server/radio-stations.json` in the linked branch, then reconnect/relaunch the DayZ mission to fetch the latest response. If the request fails (offline, blocked, invalid JSON), the bundled 48 presets remain available. If the active DayZ server sends a station list over the existing RPC, **the server list wins**. Currently, only 8–48 stations are supported; this is a temporary provider and **not yet** a geo-location radio API, geographic search, or an unlimited station library. Future APIs can replace the source and expand the pagination protocol. The HTTP request is made by each client; no Steam Workshop update is needed for subsequent edits to that JSON once this release is installed.
+
 ## In-game station menu (experimental)
 
-**v0.2.1 UI fixes:** Bundled 48-station catalogue is shown even if the server has not supplied station metadata yet. A later server snapshot still replaces the bundled catalogue. Station buttons now receive click events directly; menu no longer manipulates the global game-focus counter, and Escape/native game menus provide an emergency close path. If the server mission integration is not installed, your player may see only the bundled preset names instead of the server's custom list. Changes require rebuilding, signing and republishing the client PBO.
+**v0.2.2 UI fixes:** Bundled 48-station catalogue is shown even if the server has not supplied station metadata yet. A later server snapshot still replaces the bundled catalogue. Station buttons now receive click events directly; menu no longer manipulates the global game-focus counter, and Escape/native game menus provide an emergency close path. If the server mission integration is not installed, your player may see only the bundled preset names instead of the server's custom list. Changes require rebuilding, signing and republishing the client PBO.
 
 
 A new toggleable radio panel is included. In DayZ **Settings > Controls**, find **NekoWave Radio → Toggle Radio Menu**. The default is **F7**, and you can remap or clear it just like other DayZ controls. Some other mods may also use F7, so change it if there is a conflict.
