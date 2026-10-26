@@ -46,6 +46,19 @@ modded class MissionGameplay
 			m_NekoWaveMenu.Close();
 			m_NekoWaveMenu = null;
 		}
+		// Never leave the radio cursor active under a native pause/inventory menu.
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen() && GetGame().GetUIManager().GetMenu())
+		{
+			m_NekoWaveMenu.Close();
+			m_NekoWaveMenu = null;
+		}
+		// Escape/pause is an emergency exit even if the Close button loses focus.
+		UAInput escapeInput = GetUApi().GetInputByName("UAMenu");
+		if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen() && escapeInput && escapeInput.LocalPress())
+		{
+			m_NekoWaveMenu.Close();
+			m_NekoWaveMenu = null;
+		}
 		if (menuInput && menuInput.LocalPress())
 		{
 			if (m_NekoWaveMenu && m_NekoWaveMenu.IsOpen())
