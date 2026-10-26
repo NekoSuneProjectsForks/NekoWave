@@ -1,5 +1,7 @@
 # NekoWave Radio
 
+**Current source version: 0.2.0 (GUI/keybind beta).** The version in `server/mod.cpp` must be copied into the published mod folder when rebuilding; publishing to Steam Workshop remains a separate action.
+
 Live internet radio for DayZ handheld radios and vehicles, with experimental Radio_Fungi cassette coexistence.
 
 **Based on:** [LootTeamRadio by offmonreal](https://github.com/offmonreal/LootTeamRadio). NekoWave Radio is an independent fork that retains credit to the original project and its contributors. See [LICENSE](LICENSE) for licensing terms.
