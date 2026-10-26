@@ -5,6 +5,7 @@ modded class MissionGameplay
 {
 	private int m_LootRadioTicks;
 	private ref NekoWaveMenu m_NekoWaveMenu;
+	private bool m_NekoWaveInputChecked;
 	private int m_AnnouncedFrequency = -1;
 	private bool m_WasWorking = false;
 	private string m_AnnouncedName = "";
@@ -25,6 +26,12 @@ modded class MissionGameplay
 
 		// Poll before the radio's slower playback tick so the hotkey is responsive.
 		UAInput menuInput = GetUApi().GetInputByName("UANekoWaveToggle");
+		if (!m_NekoWaveInputChecked)
+		{
+			m_NekoWaveInputChecked = true;
+			if (!menuInput) Print("[NekoWave] ERROR: UANekoWaveToggle not registered. Check inputs.xml in client PBO and CfgMods.inputs.");
+			else Print("[NekoWave] UANekoWaveToggle registered; default F7 or player custom binding.");
+		}
 		PlayerBase menuPlayer = PlayerBase.Cast(GetGame().GetPlayer());
 		bool inCar = false;
 		bool holdingRadio = false;
@@ -47,7 +54,10 @@ modded class MissionGameplay
 				m_NekoWaveMenu = null;
 			}
 			else if ((inCar || holdingRadio) && !GetGame().GetUIManager().GetMenu())
+				{
 				m_NekoWaveMenu = new NekoWaveMenu(inCar);
+				if (!m_NekoWaveMenu.IsOpen()) Print("[NekoWave] ERROR: menu widget creation failed. Check NekoWave/gui/layouts/nekowave.layout inside the client PBO.");
+			}
 		}
 
 		m_LootRadioTicks++;
