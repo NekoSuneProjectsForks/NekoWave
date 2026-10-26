@@ -55,4 +55,8 @@ If **none** appears after joining a game, the new mission script may be missing 
 
 ## Release versioning
 
-Keep `server/mod.cpp` and `mod-src/NekoWave/config.cpp` at the same `version` value. Current source version: **0.2.0**. Copy `server/mod.cpp` as `Build/@NekoWave/mod.cpp` and `server/meta.cpp` as `Build/@NekoWave/meta.cpp` for each release. This updates descriptive metadata; it does not publish the build or repair its GUI automatically.
+Keep `server/mod.cpp` and `mod-src/NekoWave/config.cpp` at the same `version` value. Current source version: **0.2.1**. Copy `server/mod.cpp` as `Build/@NekoWave/mod.cpp` and `server/meta.cpp` as `Build/@NekoWave/meta.cpp` for each release. This updates descriptive metadata; it does not publish the build or repair its GUI automatically.
+
+## v0.2.1 UI smoke test
+
+Verify all 48 radio station rows appear, paging works, the buttons can be clicked, the F7 key toggles the panel, the panel closes when you leave the car or put the handheld down, and Alt-Tab followed by F7/Escape leaves the game responsive. The bundled station list is only a fallback; integrate the server mission code for authoritative, custom station lists. If stations are not playable, check MPC-HC web interface port 13579 separately. This source has not been compiled/tested within DayZ by the maintainer assistant.
